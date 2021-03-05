@@ -19,5 +19,7 @@ namespace MyAddresses.Domain.Models
         public DateTime? UpdatedAt { get; set; }
         [MinLength(1), MaxLength(50)]
         public string UpdatedBy { get; set; }
+        [Required, MinLength(1), MaxLength(150)]
+        public string Name { get; set; }
     }
 }

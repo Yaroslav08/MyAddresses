@@ -8,8 +8,6 @@ namespace MyAddresses.Domain.Models
 {
     public class Region : BaseModel<Guid>
     {
-        [Required, MaxLength(100)]
-        public string Name { get; set; }
         [MinLength(5), MaxLength(200)]
         public string Population { get; set; }
         public int CountryId { get; set; }

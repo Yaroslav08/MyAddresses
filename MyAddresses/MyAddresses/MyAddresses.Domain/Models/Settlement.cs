@@ -8,8 +8,6 @@ namespace MyAddresses.Domain.Models
 {
     public class Settlement : BaseModel<Guid>
     {
-        [Required]
-        public string Name { get; set; }
         [MinLength(5), MaxLength(200)]
         public string Population { get; set; }
         public SettlementType Type { get; set; }

@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 namespace MyAddresses.Domain.Models
 {
-    public class Area : BaseModel<Guid>
+    public class Street : BaseModel<Guid>
     {
 
     }
