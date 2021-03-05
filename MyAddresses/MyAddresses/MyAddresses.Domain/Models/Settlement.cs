@@ -6,13 +6,20 @@ using System.Text;
 using System.Threading.Tasks;
 namespace MyAddresses.Domain.Models
 {
-    public class Region : BaseModel<Guid>
+    public class Settlement : BaseModel<Guid>
     {
-        [Required, MaxLength(100)]
+        [Required]
         public string Name { get; set; }
         [MinLength(5), MaxLength(200)]
         public string Population { get; set; }
-        public int CountryId { get; set; }
-        public Country Country { get; set; }
+        public SettlementType Type { get; set; }
+    }
+
+    public enum SettlementType
+    {
+        City,
+        UrbanVillage,
+        Village,
+        Colony
     }
 }
