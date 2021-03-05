@@ -10,5 +10,8 @@ namespace MyAddresses.Domain.Models
     {
         [Required, MaxLength(100)]
         public string Name { get; set; }
+        public string Population { get; set; }
+        public int CountryId { get; set; }
+        public Country Country { get; set; }
     }
 }

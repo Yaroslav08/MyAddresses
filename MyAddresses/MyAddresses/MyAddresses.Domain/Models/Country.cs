@@ -14,5 +14,6 @@ namespace MyAddresses.Domain.Models
         public string Population { get; set; }
         [StringLength(5000)]
         public string History { get; set; }
+        public List<Region> Regions { get; set; }
     }
 }
