@@ -7,9 +7,9 @@ using System.Text;
 
 namespace MyAddresses.Infrastructure.Data.Context
 {
-    public class CleanArchitectureContext : DbContext
+    public class MyAddressContext : DbContext
     {
-        private const string LocalConn = "Server=(localdb)\\MSSQLLocalDB;Database=CleanArchitectureDb;Trusted_Connection=True;";
+        private const string LocalConn = "Server=(localdb)\\MSSQLLocalDB;Database=MyAddressesDb;Trusted_Connection=True;";
 
         public DbSet<User> Users { get; set; }
 
