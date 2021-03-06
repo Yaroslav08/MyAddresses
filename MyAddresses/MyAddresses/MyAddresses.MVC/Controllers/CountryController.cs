@@ -35,14 +35,18 @@ namespace MyAddresses.MVC.Controllers
         [HttpGet("create")]
         public IActionResult CreateCountry()
         {
-            return View();
+            return View(new Country
+            {
+                Id = 0,
+                CreatedAt = DateTime.UtcNow
+            });
         }
 
         [HttpPost("create")]
         public async Task<IActionResult> CreateCountry(Country country)
         {
             var countryCreated = await _countryService.CreateCountry(country);
-            return View("GetCountryById", countryCreated);
+            return LocalRedirect($"~/country/{countryCreated.Id}");
         }
 
 
