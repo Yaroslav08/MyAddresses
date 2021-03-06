@@ -24,7 +24,7 @@ namespace MyAddresses.Infrastructure.IoC
 
 
             services.AddScoped<ICountryRepository, CountryRepository>();
-
+            services.AddScoped<ICountryService, CountryService>();
 
             services.AddScoped<IFlatRepository, FlatRepository>();
 
