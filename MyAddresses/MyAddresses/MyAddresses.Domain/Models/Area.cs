@@ -9,5 +9,8 @@ namespace MyAddresses.Domain.Models
     public class Area : BaseModel<Guid>
     {
 
+        public Guid RegionId { get; set; }
+        public Region Region { get; set; }
+        public List<Settlement> Settlements { get; set; }
     }
 }

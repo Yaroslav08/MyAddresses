@@ -14,5 +14,10 @@ namespace MyAddresses.Domain.Models
         public string HouseName { get; set; }
         [MinLength(1), MaxLength(200), Url]
         public string Site { get; set; } 
+
+        public Guid StreetId { get; set; }
+        public Street Street { get; set; }
+
+        public List<Flat> Flats { get; set; }
     }
 }

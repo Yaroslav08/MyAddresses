@@ -11,6 +11,10 @@ namespace MyAddresses.Domain.Models
         [MinLength(5), MaxLength(200)]
         public string Population { get; set; }
         public SettlementType Type { get; set; }
+
+        public Guid AreaId { get; set; }
+        public Area Area { get; set; }
+        public List<Street> Streets { get; set; }
     }
 
     public enum SettlementType
