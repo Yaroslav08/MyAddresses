@@ -14,7 +14,6 @@ namespace MyAddresses.Infrastructure.IoC
     {
         public static void RegisterServices(this IServiceCollection services)
         {
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserService, UserService>();
         }
