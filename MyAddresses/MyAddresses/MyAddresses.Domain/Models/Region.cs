@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 namespace MyAddresses.Domain.Models
 {
-    public class Region : BaseModel<Guid>
+    public class Region : BaseModelWithName<Guid>
     {
         [MinLength(5), MaxLength(200)]
         public string Population { get; set; }

@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 namespace MyAddresses.Domain.Models
 {
-    public class Country : BaseModel<int>
+    public class Country : BaseModelWithName<int>
     {
         [MinLength(5), MaxLength(200)]
         public string Population { get; set; }

@@ -5,13 +5,13 @@ using System.Text;
 
 namespace MyAddresses.Domain.Models
 {
-    public class User
+    public class User : BaseModel<int>
     {
-        [Key]
-        public int Id { get; set; }
-        [Required]
-        public DateTime CreatedAt { get; set; } = DateTime.Now;
-        [Required, MinLength(3), MaxLength(20)]
-        public string Name { get; set; } = Guid.NewGuid().ToString("N").Substring(0, 10);
+        [Required, MinLength(2), MaxLength(250)]
+        public string FullName { get; set; }
+        [MinLength(5), MaxLength(200)]
+        public string Login { get; set; }
+        [MinLength(10), MaxLength(5000)]
+        public string PasswordHash { get; set; }
     }
 }

@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 namespace MyAddresses.Domain.Models
 {
-    public class Binding : BaseModel<Guid>
+    public class Binding : BaseModelWithName<Guid>
     {
         [Required]
         public bool IsPrivate { get; set; } = false;

@@ -1,4 +1,4 @@
-﻿ using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -8,10 +8,8 @@ using System.Threading.Tasks;
 
 namespace MyAddresses.Domain.Models
 {
-    public class BaseModel<TypeId>
+    public class BaseModel
     {
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public TypeId Id { get; set; }
         [Required]
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         [MinLength(1), MaxLength(50)]
@@ -19,6 +17,17 @@ namespace MyAddresses.Domain.Models
         public DateTime? UpdatedAt { get; set; }
         [MinLength(1), MaxLength(50)]
         public string UpdatedBy { get; set; }
+    }
+
+
+    public class BaseModel<TypeId> : BaseModel
+    {
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public TypeId Id { get; set; }
+    }
+
+    public class BaseModelWithName<TypeId> : BaseModel<TypeId>
+    {
         [Required, MinLength(1), MaxLength(150)]
         public string Name { get; set; }
     }

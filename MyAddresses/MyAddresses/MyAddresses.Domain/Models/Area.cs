@@ -6,9 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 namespace MyAddresses.Domain.Models
 {
-    public class Area : BaseModel<Guid>
+    public class Area : BaseModelWithName<Guid>
     {
-
         public Guid RegionId { get; set; }
         public Region Region { get; set; }
         public List<Settlement> Settlements { get; set; }
