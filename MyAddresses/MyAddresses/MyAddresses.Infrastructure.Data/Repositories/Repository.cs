@@ -13,11 +13,11 @@ namespace MyAddresses.Infrastructure.Data.Repositories
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
-        protected readonly CleanArchitectureContext db;
+        protected readonly MyAddressContext db;
         protected readonly DbSet<TEntity> dbSet;
         public Repository()
         {
-            db = new CleanArchitectureContext();
+            db = new MyAddressContext();
             dbSet = db.Set<TEntity>();
         }
 
@@ -31,22 +31,25 @@ namespace MyAddresses.Infrastructure.Data.Repositories
             return await db.Set<TEntity>().AsNoTracking().CountAsync(match);
         }
 
-        public async Task<string> CreateAsync(TEntity entity)
+        public async Task<TEntity> CreateAsync(TEntity entity)
         {
             await db.Set<TEntity>().AddAsync(entity);
-            return await SaveAsync();
+            await SaveAsync();
+            return entity;
         }
 
-        public async Task<string> CreateRangeAsync(IList<TEntity> entities)
+        public async Task<IList<TEntity>> CreateRangeAsync(IList<TEntity> entities)
         {
             await db.Set<TEntity>().AddRangeAsync(entities);
             await SaveAsync();
-            return Constants.Constants.OK;
+            return entities;
         }
 
-        public async Task<List<TEntity>> GetAllAsync()
+        public async Task<List<TEntity>> GetAllAsync(int skip)
         {
-            return await db.Set<TEntity>().AsNoTracking().ToListAsync();
+            return await db.Set<TEntity>()
+                .Skip(skip).Take(50)
+                .AsNoTracking().ToListAsync();
         }
 
         public async Task<TEntity> GetByWhereAsTrackingAsync(Expression<Func<TEntity, bool>> match)
@@ -74,18 +77,18 @@ namespace MyAddresses.Infrastructure.Data.Repositories
             return await db.Set<TEntity>().AsNoTracking().FirstOrDefaultAsync(match) != null ? true : false;
         }
 
-        public async Task<string> RemoveAsync(TEntity entity)
+        public async Task<TEntity> RemoveAsync(TEntity entity)
         {
             db.Set<TEntity>().Remove(entity);
             await SaveAsync();
-            return Constants.Constants.OK;
+            return entity;
         }
 
-        public async Task<string> RemoveRangeAsync(IList<TEntity> entities)
+        public async Task<IList<TEntity>> RemoveRangeAsync(IList<TEntity> entities)
         {
             db.Set<TEntity>().RemoveRange(entities);
             await SaveAsync();
-            return Constants.Constants.OK;
+            return entities;
         }
 
         public async Task<string> SaveAsync()
@@ -93,17 +96,18 @@ namespace MyAddresses.Infrastructure.Data.Repositories
             return await db.SaveChangesAsync() > 0 ? Constants.Constants.OK : Constants.Constants.Error;
         }
 
-        public async Task<string> UpdateAsync(TEntity entity)
+        public async Task<TEntity> UpdateAsync(TEntity entity)
         {
             db.Set<TEntity>().Update(entity);
-            return await SaveAsync();
+            await SaveAsync();
+            return entity;
         }
 
-        public async Task<string> UpdateRangeAsync(IList<TEntity> entities)
+        public async Task<IList<TEntity>> UpdateRangeAsync(IList<TEntity> entities)
         {
             db.Set<TEntity>().UpdateRange(entities);
             await SaveAsync();
-            return Constants.Constants.OK;
+            return entities;
         }
     }
 }
