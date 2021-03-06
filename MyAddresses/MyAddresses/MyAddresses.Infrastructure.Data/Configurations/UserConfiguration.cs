@@ -14,7 +14,8 @@ namespace MyAddresses.Infrastructure.Data.Configurations
             builder.HasKey(d => d.Id);
             builder.HasIndex(d => new
             {
-                d.Name
+                d.FullName,
+                d.Login
             });
         }
     }
