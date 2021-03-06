@@ -16,6 +16,27 @@ namespace MyAddresses.Infrastructure.IoC
         {
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserService, UserService>();
+
+            services.AddScoped<IAreaRepository, AreaRepository>();
+
+
+            services.AddScoped<IBindingRepository, BindingRepository>();
+
+
+            services.AddScoped<ICountryRepository, CountryRepository>();
+
+
+            services.AddScoped<IFlatRepository, FlatRepository>();
+
+
+            services.AddScoped<IRegionRepository, RegionRepository>();
+
+
+            services.AddScoped<ISettlementRepository, SettlementRepository>();
+
+
+            services.AddScoped<IStreetRepository, StreetRepository>();
+
         }
     }
 }
